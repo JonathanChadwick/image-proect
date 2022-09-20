@@ -14,7 +14,7 @@ import os
 
 def tiff_to_jpeg(image, original_file_name):
     """converts .tiff image to a .jpeg image"""
-    new_file_name = original_file_name + '.jpg'
+    new_file_name = "new/" + original_file_name + '.jpg'
     image.save(new_file_name)
 
 def image_resize(image):
@@ -28,14 +28,15 @@ def image_rotate(image):
 def main():
 
     #for loop to import files from the directory
-    path_of_images = "\image-project\images"
+    #path_of_images = "~\image-project\images\example.tiff"
     number_of_files_converted = 0
-    for tiff in os.listdir(path_of_images):
+    for tiff in os.listdir("image-project\images"):
+        print(f'debug: file: {tiff}')
         original_file_name = os.path.splitext(tiff)
         with Image.open(tiff) as image:
-            tiff_to_jpeg(image, original_file_name)
             image_resize(image)
             image_rotate(image)
+            tiff_to_jpeg(image, original_file_name)
             number_of_files_converted += 1
     print(f"Files converted: {number_of_files_converted}")
 
