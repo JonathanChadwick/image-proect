@@ -38,3 +38,5 @@ def main():
             image_rotate(image)
             number_of_files_converted += 1
     print(f"Files converted: {number_of_files_converted}")
+    
+main()
